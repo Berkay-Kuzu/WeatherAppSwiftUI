@@ -8,17 +8,20 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State var isMainButtonTapped = false
+    
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [.blue, .white]),
-                           startPoint: .topLeading,
-                           endPoint: .bottomTrailing)
-                .ignoresSafeArea(.all)
+            isMainButtonTapped ? BackgroundView(topColor: .gray , bottomColor: .black) :  BackgroundView(topColor: .blue, bottomColor: .white)
             VStack {
-                Text("Cupertino, CA")
-                    .font(.system(.title, design: .default, weight: .medium))
-                    .foregroundStyle(.white)
-                    .padding()
+                CityNameView(cityName: "Cupertino")
+                TemperatureView(imageName: "cloud.sun.fill",
+                                temperature: 32)
+                WeatherDayView()
+                Spacer()
+                MainButtonView(buttonTitle: "Change Day Color",
+                               isMainButtonTapped: $isMainButtonTapped)
                 Spacer()
             }
         }
