@@ -9,19 +9,18 @@ import SwiftUI
 
 struct TemperatureView: View {
     
-    var imageName: String
-    var temperature: Int
+    @Binding var isNight: Bool
     
     var body: some View {
         VStack( spacing: 8){
-            Image(systemName: imageName)
+            Image(systemName: isNight ? "moon.circle.fill" : "cloud.sun.fill")
                 .resizable()
                 .renderingMode(.original)
                 .aspectRatio(contentMode: .fit)
                 .frame(width: UIScreen.main.bounds.width * 0.4,
                        height: UIScreen.main.bounds.width * 0.4,
                        alignment: .center)
-            Text("\(temperature)°")
+            Text(isNight ? "\(10)°" : "\(32)°")
                 .font(.system(size: 72,
                               weight: .bold,
                               design: .default))
@@ -32,5 +31,5 @@ struct TemperatureView: View {
 }
 
 #Preview {
-    TemperatureView(imageName: "cloud.sun.fill", temperature: 32)
+//    TemperatureView(imageName: "cloud.sun.fill", temperature: 32)
 }

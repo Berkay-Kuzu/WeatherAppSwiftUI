@@ -13,11 +13,10 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            isMainButtonTapped ? BackgroundView(topColor: .gray , bottomColor: .black) :  BackgroundView(topColor: .blue, bottomColor: .white)
+            BackgroundView(isNight: $isMainButtonTapped)
             VStack {
-                CityNameView(cityName: "Cupertino")
-                TemperatureView(imageName: "cloud.sun.fill",
-                                temperature: 32)
+                CityNameView(cityName: "Cupertino, CA")
+                TemperatureView(isNight: $isMainButtonTapped)
                 WeatherDayView()
                 Spacer()
                 MainButtonView(buttonTitle: "Change Day Color",
